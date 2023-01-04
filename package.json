@@ -4,7 +4,8 @@
   "description": "A suite of tests and examples to format JS contract call parameters for Taquito",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "originate-contracts": "npx tsc && node dist/index.js originate",
+    "test": "npx tsc && node dist/index.js test"
   },
   "repository": {
     "type": "git",
