@@ -1,0 +1,30 @@
+{
+  "name": "taquito-contract-call-params",
+  "version": "1.0.0",
+  "description": "A suite of tests and examples to format JS contract call parameters for Taquito",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/claudebarde/taquito-contract-call-params.git"
+  },
+  "keywords": [
+    "Tezos",
+    "Taquito"
+  ],
+  "author": "Claude Barde",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/claudebarde/taquito-contract-call-params/issues"
+  },
+  "homepage": "https://github.com/claudebarde/taquito-contract-call-params#readme",
+  "devDependencies": {
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "@taquito/signer": "^15.0.1",
+    "@taquito/taquito": "^15.0.1"
+  }
+}
