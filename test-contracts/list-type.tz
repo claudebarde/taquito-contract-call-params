@@ -1,0 +1,42 @@
+# contract with lists
+parameter (or
+    %simple_list (list nat)
+    (or
+        (pair %pair_list int string)
+        (or
+            (list %list_list (list nat))
+            (list %or_list (or (pair int nat) string))
+        )
+    )
+);
+storage string ;
+code {
+    CAR ;
+    IF_LEFT
+        {
+            # simple list
+            DROP ;
+            PUSH string "tested_simple_list" ;
+        }
+        {
+            IF_LEFT
+                {
+                    # pair list
+                    DROP ;
+                    PUSH string "tested_pair_list" ;
+                }
+                {
+                    IF_LEFT
+                        {
+                            DROP ;
+                            PUSH string "tested_list_list" ;
+                        }
+                        {
+                            DROP ;
+                            PUSH string "tested_or_list" ;
+                        }
+                }
+        };
+    NIL operation ;
+    PAIR ;
+}

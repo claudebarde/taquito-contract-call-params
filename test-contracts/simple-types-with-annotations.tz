@@ -1,0 +1,73 @@
+# contract with parameters of simple types, with annotations
+parameter (or (unit %unit_param) 
+    (or (never %never_param) 
+        (or (bool %bool_param) 
+            (or (int %int_param)
+                (or (nat %nat_param) 
+                    (or (string %string_param) 
+                        (or 
+                            (mutez %mutez_param) 
+                            (timestamp %timestamp_param))
+                    )
+                )
+            )
+        )
+    )
+);
+storage string ;
+code {
+    CAR ;
+    IF_LEFT
+        {
+            DROP ;
+            PUSH string "tested_unit" ;
+        }
+        {
+            IF_LEFT
+            {
+                DROP ;
+                PUSH string "tested_never" ;
+            }
+            {
+                IF_LEFT
+                {
+                    DROP ;
+                    PUSH string "tested_bool" ;
+                }
+                {
+                    IF_LEFT
+                    {
+                        DROP ;
+                        PUSH string "tested_int" ;
+                    }
+                    {
+                        IF_LEFT
+                        {
+                            DROP ;
+                            PUSH string "tested_nat" ;
+                        }
+                        {
+                            IF_LEFT
+                            {
+                                DROP ;
+                                PUSH string "tested_string" ;
+                            }
+                            {
+                                IF_LEFT
+                                {
+                                    DROP ;
+                                    PUSH string "tested_mutez" ;
+                                }
+                                {
+                                    DROP ;
+                                    PUSH string "tested_timestamp" ;
+                                }
+                            };
+                        };
+                    };
+                };
+            };
+        };
+    NIL operation ;
+    PAIR ;
+}

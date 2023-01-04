@@ -1,0 +1,87 @@
+# contract with parameters of option type
+parameter (or
+    (option %nat_param nat)
+    (or
+        (option %string_param string)
+        (or
+            (option %list_nat_param (list nat))
+            (or
+                (option %pair_param (pair string nat))
+                (option %or_param (or string nat))
+            )
+        )
+    )
+);
+storage string ;
+code {
+    CAR ;
+    IF_LEFT
+        {
+            IF_SOME
+                {
+                    DROP ;
+                    PUSH string "tested_nat_param_some";
+                }
+                {
+                    PUSH string "tested_nat_param_none";
+                }
+        }
+        {
+            IF_LEFT
+            {
+                IF_SOME
+                    {
+                        DROP ;
+                        PUSH string "tested_string_param_some";
+                    }
+                    {
+                        PUSH string "tested_string_param_none";
+                    }
+            }
+            {
+                IF_LEFT
+                {
+                    IF_SOME
+                        {
+                            DROP ;
+                            PUSH string "tested_list_nat_param_some";
+                        }
+                        {
+                            PUSH string "tested_list_nat_param_none";
+                        }
+                }
+                {
+                    IF_LEFT
+                    {
+                        IF_SOME
+                            {
+                                DROP ;
+                                PUSH string "tested_pair_param_some";
+                            }
+                            {
+                                PUSH string "tested_pair_param_none";
+                            }
+                    }
+                    {
+                        IF_SOME
+                            {
+                                IF_LEFT
+                                    {
+                                        DROP ;
+                                        PUSH string "tested_or_left_param_some";
+                                    }
+                                    {
+                                        DROP ;
+                                        PUSH string "tested_or_right_param_some";
+                                    }
+                            }
+                            {
+                                PUSH string "tested_or_param_none";
+                            }
+                    };
+                };
+            };
+        };
+    NIL operation ;
+    PAIR ;
+}

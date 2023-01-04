@@ -1,0 +1,32 @@
+# contract with complex or parameter
+parameter (or 
+    (or 
+        string 
+        (pair 
+            nat 
+            (or int nat)
+        )
+    )
+    int);
+storage string ;
+code {
+    CAR ;
+    IF_LEFT
+        {
+            IF_LEFT
+                {
+                    DROP ;
+                    PUSH string "tested_left_left_string" ;
+                }
+                {
+                    DROP ;
+                    PUSH string "tested_left_right_pair" ;
+                }
+        }
+        {
+            DROP ;
+            PUSH string "tested_right_int" ;
+        };
+    NIL operation ;
+    PAIR ;
+}

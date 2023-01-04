@@ -1,0 +1,46 @@
+# contract with pairs
+parameter (or
+    (pair %simple_pair int nat)
+    (or
+        (pair (int %one) (nat %two))
+        (or
+            (pair %nested_pairs
+                (pair int nat)
+                (pair string mutez)
+            )
+            (pair
+                (pair %nested_left_pair int nat)
+                (pair %nested_right_pair string mutez)
+            )
+        )
+    )
+);
+storage string ;
+code {
+    CAR ;
+    IF_LEFT
+        {
+            DROP ;
+            PUSH string "tested_simple_pair" ;
+        }
+        {
+            IF_LEFT
+                {
+                    DROP ;
+                    PUSH string "tested_one_two" ;
+                }
+                {
+                    IF_LEFT
+                        {
+                            DROP ;
+                            PUSH string "tested_nested_pairs" ;
+                        }
+                        {
+                            DROP ;
+                            PUSH string "tested_nested_left_right_pairs" ;
+                        }
+                }
+        };
+    NIL operation ;
+    PAIR ;
+}
