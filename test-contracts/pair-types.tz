@@ -1,4 +1,3 @@
-# contract with pairs
 parameter (or
     (pair %simple_pair int nat)
     (or

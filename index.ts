@@ -5,7 +5,7 @@ const args = process.argv.slice(2);
 if (Array.isArray(args) && args.length > 0) {
   switch (args[0]) {
     case "originate":
-      originate();
+      originate().then(res => console.log(res));
       break;
     case "test":
       test();

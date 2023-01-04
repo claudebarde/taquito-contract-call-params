@@ -1,4 +1,3 @@
-# contract with parameters of simple types, no annotation
 parameter (or unit 
     (or never 
         (or bool 

@@ -1,4 +1,3 @@
-# contract with lists
 parameter (or
     %simple_list (list nat)
     (or
