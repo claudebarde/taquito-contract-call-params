@@ -13,14 +13,12 @@ code {
     CAR ;
     IF_LEFT
         {
-            # simple list
             DROP ;
             PUSH string "tested_simple_list" ;
         }
         {
             IF_LEFT
                 {
-                    # pair list
                     DROP ;
                     PUSH string "tested_pair_list" ;
                 }
