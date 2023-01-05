@@ -40,31 +40,41 @@ export default async (): Promise<Array<OriginResult>> => {
       const batchOp = await batch.send();
       await batchOp.confirmation();
 
-      let contracts: Array<OriginResult> = batchOp.results
-        .map((res, index) => {
-          const arr = (res as any)?.metadata?.operation_result
-            ?.originated_contracts;
+      const originatedContractAddresses =
+        batchOp.getOriginatedContractAddresses();
+      if (originatedContractAddresses.length === files.length) {
+        return batchOp.getOriginatedContractAddresses().map((addr, index) => ({
+          name: files[index].name,
+          address: addr
+        }));
+      } else {
+        return Promise.reject(
+          "Length of array for originated contract addresses doesn't match the length of contract array"
+        );
+      }
 
-          if (
-            arr &&
-            Array.isArray(arr) &&
-            arr.length === 1 &&
-            typeof arr[0] === "string" &&
-            arr[0].slice(0, 3) === "KT1"
-          ) {
-            return {
-              name: files[index].name,
-              address: arr[0]
-            };
-          } else {
-            return undefined;
-          }
-        })
-        .filter((el): el is OriginResult => typeof el !== undefined);
+      // let contracts: Array<OriginResult> = batchOp.results
+      //   .map((res, index) => {
+      //     const arr = (res as any)?.metadata?.operation_result
+      //       ?.originated_contracts;
 
-      console.log("Origination of contracts confirmed!");
-
-      return contracts;
+      //     if (
+      //       arr &&
+      //       Array.isArray(arr) &&
+      //       arr.length === 1 &&
+      //       typeof arr[0] === "string" &&
+      //       arr[0].slice(0, 3) === "KT1"
+      //     ) {
+      //       return {
+      //         name: files[index].name,
+      //         address: arr[0]
+      //       };
+      //     } else {
+      //       return undefined;
+      //     }
+      //   })
+      //   .filter((el): el is OriginResult => typeof el !== undefined);
+      // console.log("Origination of contracts confirmed!");
     } catch (error) {
       return Promise.reject(JSON.stringify(error));
     }
