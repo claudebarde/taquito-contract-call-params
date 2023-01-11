@@ -1,6 +1,4 @@
-import { TezosToolkit, OpKind } from "@taquito/taquito";
-import { InMemorySigner } from "@taquito/signer";
-import config from "./config";
+import { type TezosToolkit, OpKind } from "@taquito/taquito";
 import fs from "fs";
 
 interface OriginResult {
@@ -8,13 +6,10 @@ interface OriginResult {
   address: string;
 }
 
-export default async (): Promise<Array<OriginResult>> => {
+export default async (Tezos: TezosToolkit): Promise<Array<OriginResult>> => {
   if (!fs.existsSync("./contracts.json")) {
     console.log("Originating the contracts");
-    // setting up the environment
-    const Tezos = new TezosToolkit(config.network.flextesa);
-    const signer = new InMemorySigner(config.alice.sk);
-    Tezos.setSignerProvider(signer);
+
     try {
       // fetching the contract file names
       const fileNames = fs.readdirSync("./test-contracts");
