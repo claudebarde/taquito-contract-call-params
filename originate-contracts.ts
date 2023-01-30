@@ -47,30 +47,8 @@ export default async (Tezos: TezosToolkit): Promise<Array<OriginResult>> => {
           "Length of array for originated contract addresses doesn't match the length of contract array"
         );
       }
-
-      // let contracts: Array<OriginResult> = batchOp.results
-      //   .map((res, index) => {
-      //     const arr = (res as any)?.metadata?.operation_result
-      //       ?.originated_contracts;
-
-      //     if (
-      //       arr &&
-      //       Array.isArray(arr) &&
-      //       arr.length === 1 &&
-      //       typeof arr[0] === "string" &&
-      //       arr[0].slice(0, 3) === "KT1"
-      //     ) {
-      //       return {
-      //         name: files[index].name,
-      //         address: arr[0]
-      //       };
-      //     } else {
-      //       return undefined;
-      //     }
-      //   })
-      //   .filter((el): el is OriginResult => typeof el !== undefined);
-      // console.log("Origination of contracts confirmed!");
     } catch (error) {
+      console.log(error);
       return Promise.reject(JSON.stringify(error));
     }
   } else {

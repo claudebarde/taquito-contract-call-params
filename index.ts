@@ -17,6 +17,7 @@ if (Array.isArray(args) && args.length > 0) {
       originate(Tezos)
         .then(contracts => {
           if (Array.isArray(contracts) && contracts.length > 0) {
+            console.log("Contracts successfully originated!");
             fs.writeFileSync("./contracts.json", JSON.stringify(contracts));
           }
         })

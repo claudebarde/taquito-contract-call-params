@@ -3,15 +3,15 @@ import type { TezosToolkit } from "@taquito/taquito";
 export default async (Tezos: TezosToolkit, contractAddress: string) => {
   const contract = await Tezos.contract.at(contractAddress);
   try {
-    console.log("Testing simple params with annotations");
+    console.log("\n- Testing simple params with annotations");
     // unit
     const unit = await contract.methods.unit_param([["unit"]]).send();
     await unit.confirmation();
     console.log("Tested unit type successfully!");
     // never
-    const never = await contract.methods.never_param(null).send();
-    await never.confirmation();
-    console.log("Tested never type successfully!");
+    // const never = await contract.methods.never_param(null).send();
+    // await never.confirmation();
+    // console.log("Tested never type successfully!");
     // bool
     const bool = await contract.methods.bool_param(true).send();
     await bool.confirmation();

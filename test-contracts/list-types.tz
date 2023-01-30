@@ -1,7 +1,7 @@
 parameter (or
-    %simple_list (list nat)
+    (list %simple_list nat)
     (or
-        (pair %pair_list int string)
+        (list %pair_list (pair int string))
         (or
             (list %list_list (list nat))
             (list %or_list (or (pair int nat) string))
