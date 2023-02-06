@@ -3,7 +3,7 @@ parameter (or
         string 
         (pair 
             nat 
-            (or int nat)
+            (or int string)
         )
     )
     int);

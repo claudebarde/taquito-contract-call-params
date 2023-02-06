@@ -25,10 +25,8 @@ export default async (Tezos: TezosToolkit, contractAddress: string) => {
     // TODO: debug the parameter for this contract call
     //pair (pair %nested_left_pair int nat) (pair %nested_right_pair string mutez)
     const nested_pairs_no_annot = await contract.methodsObject["3"]({
-      0: 2,
-      1: 3,
-      2: "taquito",
-      3: 50_000
+      nested_left_pair: { "3": 2, "4": 3 },
+      nested_right_pair: { "5": "taquito", "6": 50_000 }
     }).send();
     // tried:
     // { 0: 2, 1: 3, 2: "taquito", 3: 50_000 }

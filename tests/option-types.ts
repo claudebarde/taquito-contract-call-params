@@ -3,7 +3,7 @@ import type { TezosToolkit } from "@taquito/taquito";
 export default async (Tezos: TezosToolkit, contractAddress: string) => {
   const contract = await Tezos.contract.at(contractAddress);
   try {
-    console.log("\n- Testing union params");
+    console.log("\n- Testing option params");
     //option %nat_param nat
     const simple_option_some = await contract.methods.nat_param(4).send();
     await simple_option_some.confirmation();

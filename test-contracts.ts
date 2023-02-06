@@ -6,6 +6,7 @@ import pairTypesWithMethods from "./tests/pair-types-with-methods";
 import pairTypesWithMethodsObject from "./tests/pair-types-with-methodsObject";
 import unionTypes from "./tests/option-types";
 import listTypes from "./tests/list-types";
+import complexOrParam from "./tests/complex-or-params";
 
 export default async (Tezos: TezosToolkit): Promise<boolean> => {
   if (fs.existsSync("./contracts.json")) {
@@ -33,7 +34,9 @@ export default async (Tezos: TezosToolkit): Promise<boolean> => {
         contractAddress = contractAddresses["option-types"];
         // await unionTypes(Tezos, contractAddress);
         contractAddress = contractAddresses["list-types"];
-        await listTypes(Tezos, contractAddress);
+        // await listTypes(Tezos, contractAddress);
+        contractAddress = contractAddresses["complex-or-params"];
+        await complexOrParam(Tezos, contractAddress);
 
         return true;
       } else {

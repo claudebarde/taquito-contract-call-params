@@ -6,7 +6,7 @@
   "scripts": {
     "originate-contracts": "npx tsc && node dist/index.js originate",
     "test": "npx tsc && node dist/index.js test",
-    "start-flextesa": "docker run --rm --name lima-sandbox --detach -p 20000:20000 --env flextesa_node_cors_origin='*' --env block_time=5 oxheadalpha/flextesa:20221123 limabox start --genesis random"
+    "start-flextesa": "rm contracts.json && docker run --rm --name lima-sandbox --detach -p 20000:20000 --env flextesa_node_cors_origin='*' --env block_time=5 oxheadalpha/flextesa:20221123 limabox start --genesis random"
   },
   "repository": {
     "type": "git",
