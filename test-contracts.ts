@@ -22,19 +22,19 @@ export default async (Tezos: TezosToolkit): Promise<boolean> => {
         }, {});
         // testing simple params without annotations
         let contractAddress = contractAddresses["simple-types-no-annot"];
-        // await simpleTypesNoAnnot(Tezos, contractAddress);
+        await simpleTypesNoAnnot(Tezos, contractAddress);
         // testing simple params with annotations
         contractAddress = contractAddresses["simple-types-with-annotations"];
-        // await simpleTypesWithAnnotations(Tezos, contractAddress);
+        await simpleTypesWithAnnotations(Tezos, contractAddress);
         // testing pair type params
         contractAddress = contractAddresses["pair-types"];
-        // await pairTypesWithMethods(Tezos, contractAddress);
-        // await pairTypesWithMethodsObject(Tezos, contractAddress);
+        await pairTypesWithMethods(Tezos, contractAddress);
+        await pairTypesWithMethodsObject(Tezos, contractAddress);
         // testing union types
         contractAddress = contractAddresses["option-types"];
-        // await unionTypes(Tezos, contractAddress);
+        await unionTypes(Tezos, contractAddress);
         contractAddress = contractAddresses["list-types"];
-        // await listTypes(Tezos, contractAddress);
+        await listTypes(Tezos, contractAddress);
         contractAddress = contractAddresses["complex-or-params"];
         await complexOrParam(Tezos, contractAddress);
 
